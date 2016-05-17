@@ -20,7 +20,7 @@ Examples n Such
 	var list = winOpen.getList();
 	var list = jQuery.winOpenList();
 	
-	// All Options
+	// All Options  //  For all "yes|no" options, you can also use Boolean values (not stringed), whereas `true == 'yes'`
 	winOpen({
 		url: '',
 		name: '',
