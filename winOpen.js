@@ -100,13 +100,17 @@
 		
 		newWin = window.open.apply(window, newWinArgs);
 		newWin.winOpen = {
+			index: list.length,
 			url: url,
 			name: name,
 			specs: specs,
 			replace: replace
 		}
+		list.push(newWin);
 		
-		return list.push(newWin);
+		newWin.onbeforeunload = function() { list.splice(this.winOpen.index, 1); }
+		
+		return newWin;
 	}
 	
 	winOpen.getList = function(index) {
@@ -114,7 +118,7 @@
 		return list;
 	}
 	
-	//	add as window variable
+	//	add as global variable
 	window.hasOwnProperty("winOpen")||(window.winOpen=winOpen);
 	
 	//	add as a jQuery extension
