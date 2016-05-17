@@ -81,7 +81,7 @@
 					var ax = args[x];
 					if (!url && ax.hasOwnProperty('url') && matchUrl(ax['url'])['valid'])  url = ax['url'];
 					if (!name && ax.hasOwnProperty('name') && ax['name']) name = ax['name'];
-					for (var y in ax) if (/boolean|number|string/.test(typeof ax[y]) && defaultSpecs[y]) specs[y] = y + '=' + ax[y];
+					for (var y in ax) if (/boolean|number|string/.test(typeof ax[y]) && defaultSpecs[y]) specs[y] = y + '=' + (typeof ax[y] == 'boolean' ? (ax[y]==true?'yes':'no') : ax[y]);
 					
 				}// finally check replace param
 				else if (typeof args[x] == 'boolean' && void 0 == replace) replace = args[x];
